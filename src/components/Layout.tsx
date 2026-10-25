@@ -16,7 +16,7 @@ function Header() {
   const [q, setQ] = useState('');
   const nav = useNavigate();
   const { pathname } = useLocation();
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
   const showSearch = pathname !== '/' && pathname !== '/catalogue';
 
   return (
@@ -83,7 +83,8 @@ function Footer() {
 
 export function Layout() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  // Accolades obligatoires : dans les Chrome récents scrollTo renvoie une Promise, que React prendrait pour une fonction de nettoyage.
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return (
     <>
       <Header />

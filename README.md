@@ -32,3 +32,13 @@ npm run build    # génère dist/
 Chaque push sur `main` déploie automatiquement sur GitHub Pages
 (Settings → Pages → Source : « GitHub Actions »).
 Avec un domaine personnalisé, définir la variable de dépôt `VITE_BASE` à `/`.
+
+### Hébergement Namecheap
+
+Le site est aussi servi par le cPanel Namecheap sur https://pharmavert.mygympro.club :
+
+```bash
+./deploy-namecheap.sh   # build avec VITE_BASE=/ puis rsync vers ~/pharmavert.mygympro.club
+```
+
+`public/.htaccess` renvoie toutes les routes vers `index.html` et force le HTTPS.

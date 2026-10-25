@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { AUDIENCES, PRODUCTS, img, productBySlug, telLink, waLink } from '../data/catalog';
 import { Icon, ProductBadge, WhatsAppIcon } from '../components/Art';
-import { ProductCard } from '../components/ProductCard';
+import { ProductCard, boxBg } from '../components/ProductCard';
 import { useTitle } from '../seo';
 
 const TABS = [
@@ -31,6 +31,9 @@ export default function ProductPage() {
     );
   }
 
+  // Ancienne adresse : on bascule sur l'adresse actuelle du produit.
+  if (p.slug !== slug) return <Navigate to={`/produit/${p.slug}`} replace />;
+
   const others = PRODUCTS.filter((x) => x.slug !== p.slug).slice(0, 3);
   const audience = AUDIENCES.find((a) => a.slug === p.audience)!.name;
 
@@ -42,16 +45,22 @@ export default function ProductPage() {
             <Link to="/">Accueil</Link> › <Link to="/catalogue">Nos produits</Link> › <span>{p.name}</span>
           </nav>
           <div className="product-top">
-            <div className="product-media">
-              <img src={img(p.image)} alt={`Illustration : ${p.name}`} />
+            <div className={`product-media${p.box ? ' product-media-box' : ''}`} style={p.box ? { background: boxBg(p) } : undefined}>
+              <img src={img(p.box ?? p.image)} alt={p.box ? `Boîte ${p.name}${p.pack ? `, ${p.pack.toLowerCase()}` : ''}` : `Illustration : ${p.name}`} />
               {p.isNew && <span className="tag-new">Nouveau</span>}
               <ProductBadge p={p} size={72} />
             </div>
             <div className="product-info">
-              <span className="kicker">Complément alimentaire · {audience}</span>
+              <span className="kicker">{p.gamme ?? 'Complément alimentaire'} · {audience}</span>
               <h1 style={{ color: p.ink }}>{p.name}</h1>
               <p className="lead">{p.desc}</p>
               <p className="prose">{p.summary}</p>
+              {(p.actifs || p.pack) && (
+                <dl className="facts">
+                  {p.actifs && <div><dt>Actifs</dt><dd>{p.actifs}</dd></div>}
+                  {p.pack && <div><dt>Présentation</dt><dd>{p.pack}</dd></div>}
+                </dl>
+              )}
               <div className="actions">
                 <a className="btn btn-pill btn-lg" href={waLink(`Bonjour, j’ai une question sur le produit « ${p.name} ».`)} target="_blank" rel="noreferrer">
                   <WhatsAppIcon /> Poser une question

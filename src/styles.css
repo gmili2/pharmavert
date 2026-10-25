@@ -134,6 +134,8 @@ strong { color: var(--ink); }
 .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(20, 80, 42, .12); }
 .card-media { position: relative; height: 150px; display: block; }
 .card-media img { width: 100%; height: 100%; object-fit: cover; }
+.card-media-box img { object-fit: contain; padding: 14px 12px 22px; filter: drop-shadow(0 8px 10px rgba(20, 50, 30, .18)); }
+.card-gamme { font-size: 11px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); }
 .card-media .p-badge { position: absolute; left: 50%; bottom: -24px; transform: translateX(-50%); }
 .tag-new { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; padding: 5px 9px; border-radius: 999px; background: var(--green); color: #fff; }
 .p-badge { border-radius: 50%; border: 3px solid #fff; display: grid; place-items: center; flex-shrink: 0; }
@@ -196,6 +198,12 @@ a.contact-card:hover { box-shadow: var(--shadow); color: var(--ink); }
 .product-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .product-media { position: relative; border-radius: 24px; overflow: visible; aspect-ratio: 16 / 9; }
 .product-media img { width: 100%; height: 100%; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow); }
+.product-media-box { border-radius: 24px; box-shadow: var(--shadow); }
+.product-media-box img { object-fit: contain; padding: 28px 32px 48px; box-shadow: none; filter: drop-shadow(0 14px 18px rgba(20, 50, 30, .2)); }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; }
+.facts div { background: #fff; border-radius: 12px; padding: 12px 14px; }
+.facts dt { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-weight: 700; }
 .product-media .tag-new { top: 16px; left: 16px; }
 .product-media .p-badge { position: absolute; left: 50%; bottom: -36px; transform: translateX(-50%); border-width: 4px; }
 .product-info { display: flex; flex-direction: column; gap: 16px; }
@@ -272,6 +280,7 @@ a.contact-card:hover { box-shadow: var(--shadow); color: var(--ink); }
   .form { grid-template-columns: 1fr; padding: 20px; }
   .form .btn { width: 100%; }
   .actions .btn { flex: 1 1 100%; }
+  .facts { grid-template-columns: 1fr; }
   .tab-panel { padding: 20px; }
   .footer-row { flex-direction: column; align-items: flex-start; }
 }

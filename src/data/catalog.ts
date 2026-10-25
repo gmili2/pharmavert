@@ -19,9 +19,19 @@ export type Audience = 'adulte' | 'enfant' | 'famille';
 
 export type Product = {
   slug: string;
+  /** Nom commercial (ex. Cumax) ou nom de gamme pour les produits sans marque. */
   name: string;
+  /** Gamme affichée sous le nom commercial (ex. Anti-inflammatoire). */
+  gamme?: string;
   desc: string;
+  /** Photo d'ambiance. */
   image: string;
+  /** Photo de la boîte détourée (PNG/WebP transparent), affichée à la place de la photo d'ambiance. */
+  box?: string;
+  /** Conditionnement, ex. « Boîte de 30 gélules ». */
+  pack?: string;
+  /** Actifs imprimés sur la boîte. */
+  actifs?: string;
   /** Couleur de la pastille. */
   color: string;
   /** Couleur (plus foncée) du titre. */
@@ -51,32 +61,39 @@ const tabs = (bienfaits = A_COMPLETER, conservation = CONSERVATION) =>
 
 export const PRODUCTS: Product[] = [
   {
-    slug: 'anti-inflammatoire', name: 'Anti-inflammatoire', desc: 'Soulage les douleurs et réduit l’inflammation.',
-    image: 'anti-inflammatoire.jpg', color: '#E8891C', ink: '#A04A0C', icon: 'joint', audience: 'adulte',
-    keys: 'douleur articulation genou inflammation',
-    summary: 'Complément alimentaire conçu pour accompagner le confort des articulations au quotidien.',
-    tabs: tabs(),
+    slug: 'cumax', name: 'Cumax', gamme: 'Anti-inflammatoire', desc: 'Confort articulaire et confort musculaire, à base de curcumine.',
+    image: 'anti-inflammatoire.jpg', box: 'boite-cumax.webp', pack: 'Boîte de 30 gélules · voie orale', actifs: 'Curcumine · actifs naturels',
+    color: '#E8891C', ink: '#A04A0C', icon: 'joint', audience: 'adulte',
+    keys: 'anti inflammatoire douleur articulation genou inflammation curcumine curcuma muscle',
+    summary: 'Complément alimentaire à base de curcumine et d’actifs naturels, pour le confort articulaire et le confort musculaire.',
+    tabs: tabs('Confort articulaire et confort musculaire.'),
   },
   {
-    slug: 'decontractant', name: 'Décontractant', desc: 'Aide à détendre les muscles et à retrouver la mobilité.',
-    image: 'decontractant.jpg', color: '#2D8BD0', ink: '#1A66A3', icon: 'muscle', audience: 'adulte',
-    keys: 'muscle dos contracture crampe',
-    summary: 'Complément alimentaire pour accompagner la détente musculaire et la mobilité.',
-    tabs: tabs(),
+    slug: 'deconat', name: 'Deconat', gamme: 'Myorelaxant · Décontractant', desc: 'Soulage efficacement les tensions musculaires.',
+    image: 'decontractant.jpg', box: 'boite-deconat.webp', pack: 'Boîte de 30 gélules', actifs: 'Actifs naturels',
+    color: '#2D8BD0', ink: '#1A66A3', icon: 'muscle', audience: 'adulte',
+    keys: 'myorelaxant decontractant muscle dos contracture crampe tension',
+    summary: 'Complément alimentaire aux actifs naturels qui aide à détendre les muscles et à soulager les tensions musculaires.',
+    tabs: tabs('Soulage efficacement les tensions musculaires.'),
   },
   {
-    slug: 'anti-ballonnement', name: 'Anti ballonnement', desc: 'Favorise une digestion légère et confortable.',
-    image: 'anti-ballonnement.jpg', color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'famille',
-    keys: 'digestion ventre ballonnement estomac gaz',
-    summary: 'Complément alimentaire pour retrouver une digestion légère et un ventre plus confortable.',
-    tabs: tabs(),
+    slug: 'nobal', name: 'Nobal', gamme: 'Anti-ballonnement', desc: 'Élimine les gaz intestinaux et facilite la digestion.',
+    image: 'anti-ballonnement.jpg', box: 'boite-nobal.webp', pack: 'Boîte de 30 gélules · poids net ≈ 12,5 g', actifs: 'Charbon végétal + E.S. de fenouil + E.S. de carvi',
+    color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'famille',
+    keys: 'anti ballonnement digestion ventre estomac gaz charbon fenouil carvi',
+    summary: 'Complément alimentaire au charbon végétal, à l’extrait sec de fenouil et à l’extrait sec de carvi, pour un ventre plus léger.',
+    tabs: { ...tabs('Élimine les gaz intestinaux et facilite la digestion.'), composition: 'Charbon végétal, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
   },
   {
-    slug: 'magnesium', name: 'Magnésium', desc: 'Contribue à réduire la fatigue et au bon fonctionnement musculaire.',
-    image: 'magnesium.jpg', color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte', isNew: true,
-    keys: 'fatigue stress mg vitamine sommeil',
-    summary: 'Le magnésium contribue à réduire la fatigue et au fonctionnement normal du système musculaire.',
-    tabs: tabs('Le magnésium contribue à réduire la fatigue, au fonctionnement normal du système nerveux et au fonctionnement normal des muscles.'),
+    slug: 'ociamag', name: 'Ociamag 375 mg', gamme: 'Magnésium', desc: 'Magnésium et vitamine B6 : détente et équilibre, physique et intellectuel.',
+    image: 'magnesium.jpg', box: 'boite-ociamag.webp', pack: 'Boîte de 30 gélules', actifs: 'Magnésium 375 mg · vitamine B6',
+    color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte', isNew: true,
+    keys: 'magnesium mg vitamine b6 fatigue stress detente equilibre sommeil',
+    summary: 'Complément alimentaire associant 375 mg de magnésium et de la vitamine B6, pour la détente et l’équilibre, physique et intellectuel.',
+    tabs: {
+      ...tabs('Détente et équilibre, physique et intellectuel. Le magnésium contribue à réduire la fatigue, au fonctionnement normal du système nerveux et au fonctionnement normal des muscles.'),
+      composition: 'Magnésium 375 mg, vitamine B6. Composition détaillée : à compléter avec l’étiquetage.',
+    },
   },
   {
     slug: 'stimulant-appetit', name: 'Stimulant d’appétit', desc: 'Aide à retrouver le plaisir de manger.',
@@ -94,7 +111,11 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === slug);
+/** Anciennes adresses (avant les noms commerciaux), gardées pour les liens déjà partagés. */
+const OLD_SLUGS: Record<string, string> = {
+  'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag',
+};
+export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (OLD_SLUGS[slug] ?? slug));
 
 /** Lien WhatsApp vers le délégué avec un message pré-rempli. */
 export const waLink = (text: string) => `https://wa.me/${CONTACT.phoneIntl}?text=${encodeURIComponent(text)}`;
@@ -104,6 +125,6 @@ export const telLink = `tel:+${CONTACT.phoneIntl}`;
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 export function matches(p: Product, q: string) {
   if (!q.trim()) return true;
-  const hay = norm([p.name, p.desc, p.keys].join(' '));
+  const hay = norm([p.name, p.gamme ?? '', p.desc, p.actifs ?? '', p.keys].join(' '));
   return norm(q).split(/\s+/).every((w) => hay.includes(w));
 }

@@ -1,6 +1,6 @@
-// Contenu du site : tout ce qui change souvent (produits, catégories, contact) est ici.
-// Les produits ci-dessous sont des EXEMPLES repris de la maquette : à remplacer par la gamme réelle
-// du client, avec des textes validés par un pharmacien.
+// Contenu du site : tout ce qui change souvent (produits, contact) est ici.
+// Les textes produits sont des PREMIÈRES VERSIONS : bienfaits, conseils d'utilisation et composition
+// sont à remplacer par les textes validés figurant sur l'étiquetage de chaque complément.
 
 export const CONTACT = {
   name: 'El Amrani El Hassan',
@@ -11,159 +11,99 @@ export const CONTACT = {
   hours: 'Du lundi au samedi, 9h – 18h',
 };
 
-export type Delivery = 'sans' | 'sur';
-export type Shape = 'boite' | 'flacon' | 'tube' | 'effervescent' | 'unidoses';
+/** Chemin d'une image de public/img, compatible avec le sous-dossier GitHub Pages. */
+export const img = (file: string) => `${import.meta.env.BASE_URL}img/${file}`;
 
-export type Category = {
-  slug: string;
-  name: string;
-  color: string;
-  blurb: string;
-};
-
-export const CATEGORIES: Category[] = [
-  { slug: 'douleur-fievre', name: 'Douleur & fièvre', color: '#E07B39', blurb: 'Antalgiques et antipyrétiques pour les douleurs du quotidien.' },
-  { slug: 'antibiotiques', name: 'Antibiotiques', color: '#7A4FA0', blurb: 'Traitements anti-infectieux délivrés sur prescription.' },
-  { slug: 'vitamines', name: 'Vitamines & énergie', color: '#F2A93B', blurb: 'Vitamines et minéraux pour la vitalité et l’immunité.' },
-  { slug: 'digestion', name: 'Digestion', color: '#2C8C99', blurb: 'Confort digestif, acidité et transit.' },
-  { slug: 'rhume-toux', name: 'Rhume & toux', color: '#A85A1C', blurb: 'Sirops, sérums et soins de la sphère ORL.' },
-  { slug: 'dermatologie', name: 'Dermatologie', color: '#2F7A3B', blurb: 'Crèmes et soins pour réparer et protéger la peau.' },
-];
+export type IconKey = 'joint' | 'muscle' | 'stomach' | 'mg' | 'fork' | 'cough';
+export type Audience = 'adulte' | 'enfant' | 'famille';
 
 export type Product = {
   slug: string;
   name: string;
-  category: string;
-  delivery: Delivery;
-  shape: Shape;
-  form: string;
-  pack: string;
-  molecule: string;
-  dosage: string;
-  route: string;
-  reference: string;
+  desc: string;
+  image: string;
+  /** Couleur de la pastille. */
+  color: string;
+  /** Couleur (plus foncée) du titre. */
+  ink: string;
+  icon: IconKey;
+  audience: Audience;
+  isNew?: boolean;
+  /** Mots-clés de recherche (symptômes, synonymes). */
+  keys: string;
   summary: string;
-  warning?: string;
-  noticeUrl?: string;
-  tabs: { indications: string; posologie: string; contreIndications: string; composition: string; conservation: string };
+  tabs: { bienfaits: string; utilisation: string; precautions: string; composition: string; conservation: string };
 };
 
-const CONSERVATION = 'À conserver à une température inférieure à 25 °C, à l’abri de l’humidité et hors de la portée des enfants.';
+export const AUDIENCES: { slug: Audience | ''; name: string }[] = [
+  { slug: '', name: 'Tous' },
+  { slug: 'adulte', name: 'Adultes' },
+  { slug: 'enfant', name: 'Enfants' },
+  { slug: 'famille', name: 'Toute la famille' },
+];
+
+const A_COMPLETER = 'À compléter avec le texte figurant sur l’étiquetage du produit.';
+const CONSERVATION = 'À conserver dans un endroit sec, à température ambiante, à l’abri de la lumière et hors de la portée des enfants.';
+const PRECAUTIONS = 'Ne pas dépasser la dose journalière recommandée. Un complément alimentaire ne remplace pas une alimentation variée et équilibrée ni un mode de vie sain. Demandez conseil à votre médecin ou pharmacien en cas de grossesse, d’allaitement ou de traitement en cours.';
+
+const tabs = (bienfaits = A_COMPLETER, conservation = CONSERVATION) =>
+  ({ bienfaits, utilisation: A_COMPLETER, precautions: PRECAUTIONS, composition: A_COMPLETER, conservation });
 
 export const PRODUCTS: Product[] = [
   {
-    slug: 'paracetamol-500', name: 'Paracétamol 500 mg', category: 'douleur-fievre', delivery: 'sans', shape: 'boite',
-    form: 'Comprimés', pack: 'boîte de 16', molecule: 'Paracétamol', dosage: '500 mg', route: 'Orale', reference: 'PV-0101',
-    summary: 'Antalgique et antipyrétique utilisé pour soulager les douleurs légères à modérées et faire baisser la fièvre.',
-    warning: 'Ne pas associer à d’autres médicaments contenant du paracétamol. Demandez conseil à votre pharmacien en cas de doute.',
-    tabs: {
-      indications: 'Traitement symptomatique des douleurs d’intensité légère à modérée (maux de tête, douleurs dentaires, courbatures, règles douloureuses) et des états fébriles.',
-      posologie: 'Adulte et enfant de plus de 50 kg : 1 à 2 comprimés par prise, à renouveler si besoin après 4 heures minimum, sans dépasser la dose indiquée sur la notice.',
-      contreIndications: 'Allergie au paracétamol, insuffisance hépatique sévère.',
-      composition: 'Paracétamol 500 mg. Excipients : voir la notice.',
-      conservation: CONSERVATION,
-    },
+    slug: 'anti-inflammatoire', name: 'Anti-inflammatoire', desc: 'Soulage les douleurs et réduit l’inflammation.',
+    image: 'anti-inflammatoire.jpg', color: '#E8891C', ink: '#A04A0C', icon: 'joint', audience: 'adulte',
+    keys: 'douleur articulation genou inflammation',
+    summary: 'Complément alimentaire conçu pour accompagner le confort des articulations au quotidien.',
+    tabs: tabs(),
   },
   {
-    slug: 'ibuprofene-400', name: 'Ibuprofène 400 mg', category: 'douleur-fievre', delivery: 'sans', shape: 'boite',
-    form: 'Comprimés pelliculés', pack: 'boîte de 20', molecule: 'Ibuprofène', dosage: '400 mg', route: 'Orale', reference: 'PV-0102',
-    summary: 'Anti-inflammatoire non stéroïdien utilisé contre la douleur, la fièvre et l’inflammation.',
-    warning: 'Déconseillé en cas d’ulcère gastrique et pendant la grossesse. Demandez l’avis de votre pharmacien.',
-    tabs: {
-      indications: 'Traitement de courte durée des douleurs et de la fièvre, notamment d’origine inflammatoire.',
-      posologie: 'Adulte : 1 comprimé par prise, au cours d’un repas, en respectant un intervalle de 6 heures. Suivre la notice.',
-      contreIndications: 'Ulcère gastroduodénal, insuffisance rénale ou hépatique sévère, grossesse à partir du 6e mois, allergie aux AINS.',
-      composition: 'Ibuprofène 400 mg. Excipients : voir la notice.',
-      conservation: CONSERVATION,
-    },
+    slug: 'decontractant', name: 'Décontractant', desc: 'Aide à détendre les muscles et à retrouver la mobilité.',
+    image: 'decontractant.jpg', color: '#2D8BD0', ink: '#1A66A3', icon: 'muscle', audience: 'adulte',
+    keys: 'muscle dos contracture crampe',
+    summary: 'Complément alimentaire pour accompagner la détente musculaire et la mobilité.',
+    tabs: tabs(),
   },
   {
-    slug: 'amoxicilline-1g', name: 'Amoxicilline 1 g', category: 'antibiotiques', delivery: 'sur', shape: 'boite',
-    form: 'Comprimés dispersibles', pack: 'boîte de 14', molecule: 'Amoxicilline', dosage: '1 g', route: 'Orale', reference: 'PV-0201',
-    summary: 'Antibiotique de la famille des pénicillines, prescrit dans le traitement de certaines infections bactériennes.',
-    warning: 'Médicament délivré uniquement sur ordonnance. Respectez la durée de traitement prescrite par votre médecin.',
-    tabs: {
-      indications: 'Infections bactériennes à germes sensibles, selon la prescription médicale.',
-      posologie: 'Selon la prescription de votre médecin.',
-      contreIndications: 'Allergie aux pénicillines ou aux céphalosporines.',
-      composition: 'Amoxicilline trihydratée, équivalent à 1 g d’amoxicilline. Excipients : voir la notice.',
-      conservation: CONSERVATION,
-    },
+    slug: 'anti-ballonnement', name: 'Anti ballonnement', desc: 'Favorise une digestion légère et confortable.',
+    image: 'anti-ballonnement.jpg', color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'famille',
+    keys: 'digestion ventre ballonnement estomac gaz',
+    summary: 'Complément alimentaire pour retrouver une digestion légère et un ventre plus confortable.',
+    tabs: tabs(),
   },
   {
-    slug: 'vitamine-c-1000', name: 'Vitamine C 1000 mg', category: 'vitamines', delivery: 'sans', shape: 'effervescent',
-    form: 'Comprimés effervescents', pack: 'tube de 20', molecule: 'Acide ascorbique', dosage: '1000 mg', route: 'Orale', reference: 'PV-0301',
-    summary: 'Apport en vitamine C pour aider à réduire la fatigue et contribuer au fonctionnement normal du système immunitaire.',
-    tabs: {
-      indications: 'États de fatigue passagère, besoins accrus en vitamine C.',
-      posologie: '1 comprimé par jour, à dissoudre dans un grand verre d’eau, de préférence le matin.',
-      contreIndications: 'Antécédents de calculs rénaux, régime pauvre en sel (présence de sodium).',
-      composition: 'Acide ascorbique 1000 mg. Excipients : voir la notice.',
-      conservation: 'Refermer soigneusement le tube après usage. À conserver à l’abri de l’humidité.',
-    },
+    slug: 'magnesium', name: 'Magnésium', desc: 'Contribue à réduire la fatigue et au bon fonctionnement musculaire.',
+    image: 'magnesium.jpg', color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte', isNew: true,
+    keys: 'fatigue stress mg vitamine sommeil',
+    summary: 'Le magnésium contribue à réduire la fatigue et au fonctionnement normal du système musculaire.',
+    tabs: tabs('Le magnésium contribue à réduire la fatigue, au fonctionnement normal du système nerveux et au fonctionnement normal des muscles.'),
   },
   {
-    slug: 'omeprazole-20', name: 'Oméprazole 20 mg', category: 'digestion', delivery: 'sur', shape: 'boite',
-    form: 'Gélules gastro-résistantes', pack: 'boîte de 14', molecule: 'Oméprazole', dosage: '20 mg', route: 'Orale', reference: 'PV-0401',
-    summary: 'Inhibiteur de la pompe à protons qui réduit la sécrétion d’acide de l’estomac.',
-    warning: 'Médicament délivré sur ordonnance. Ne pas prolonger le traitement sans avis médical.',
-    tabs: {
-      indications: 'Reflux gastro-œsophagien et autres affections liées à l’acidité gastrique, selon prescription.',
-      posologie: 'Selon la prescription médicale, généralement 1 gélule le matin à jeun.',
-      contreIndications: 'Allergie à l’oméprazole ou aux benzimidazoles.',
-      composition: 'Oméprazole 20 mg. Excipients : voir la notice.',
-      conservation: CONSERVATION,
-    },
+    slug: 'stimulant-appetit', name: 'Stimulant d’appétit', desc: 'Aide à retrouver le plaisir de manger.',
+    image: 'stimulant-appetit.jpg', color: '#D23A7E', ink: '#AD2263', icon: 'fork', audience: 'enfant',
+    keys: 'appetit enfant manger croissance',
+    summary: 'Complément alimentaire pour aider à retrouver le plaisir de manger.',
+    tabs: tabs(),
   },
   {
-    slug: 'sirop-toux-seche', name: 'Sirop contre la toux sèche', category: 'rhume-toux', delivery: 'sans', shape: 'flacon',
-    form: 'Sirop', pack: 'flacon de 125 ml', molecule: 'À compléter', dosage: 'À compléter', route: 'Orale', reference: 'PV-0501',
-    summary: 'Sirop destiné à calmer les toux sèches et irritatives.',
-    tabs: {
-      indications: 'Traitement de courte durée des toux sèches et des toux d’irritation.',
-      posologie: 'Selon l’âge, à l’aide du gobelet doseur fourni. Suivre la notice.',
-      contreIndications: 'Toux grasse, insuffisance respiratoire, enfant de moins de 6 ans sauf avis médical.',
-      composition: 'À compléter avec la composition validée du produit.',
-      conservation: 'Après ouverture, à conserver 1 mois maximum.',
-    },
-  },
-  {
-    slug: 'serum-physiologique', name: 'Sérum physiologique', category: 'rhume-toux', delivery: 'sans', shape: 'unidoses',
-    form: 'Unidoses 5 ml', pack: 'boîte de 30', molecule: 'Chlorure de sodium', dosage: '0,9 %', route: 'Nasale, oculaire', reference: 'PV-0502',
-    summary: 'Solution isotonique pour le lavage du nez et des yeux, adaptée à toute la famille.',
-    tabs: {
-      indications: 'Hygiène nasale quotidienne, lavage oculaire.',
-      posologie: '1 unidose par narine ou par œil, plusieurs fois par jour si nécessaire.',
-      contreIndications: 'Aucune connue.',
-      composition: 'Chlorure de sodium 0,9 %, eau purifiée.',
-      conservation: 'Unidose à usage unique : jeter après utilisation.',
-    },
-  },
-  {
-    slug: 'creme-reparatrice', name: 'Crème hydratante réparatrice', category: 'dermatologie', delivery: 'sans', shape: 'tube',
-    form: 'Crème', pack: 'tube de 50 ml', molecule: 'Complexe émollient', dosage: '—', route: 'Cutanée', reference: 'PV-0601',
-    summary: 'Crème qui nourrit, apaise et aide à réparer les peaux sèches et irritées.',
-    tabs: {
-      indications: 'Peaux sèches, rugueuses ou irritées du visage et du corps.',
-      posologie: 'Appliquer 1 à 2 fois par jour sur une peau propre et sèche.',
-      contreIndications: 'Allergie à l’un des composants.',
-      composition: 'Voir la liste des ingrédients sur l’emballage.',
-      conservation: 'À conserver à température ambiante. Après ouverture, à utiliser dans les 6 mois.',
-    },
+    slug: 'sirop-toux', name: 'Sirop pour la toux', desc: 'Apaise la gorge et facilite la respiration.',
+    image: 'sirop-toux.jpg', color: '#2D8BD0', ink: '#1A66A3', icon: 'cough', audience: 'enfant', isNew: true,
+    keys: 'toux gorge rhume respiration sirop enfant',
+    summary: 'Sirop pour apaiser la gorge irritée et accompagner le confort respiratoire.',
+    tabs: tabs(A_COMPLETER, 'Bien refermer le flacon après usage. ' + CONSERVATION),
   },
 ];
 
-export const categoryOf = (slug: string) => CATEGORIES.find((c) => c.slug === slug)!;
 export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === slug);
 
 /** Lien WhatsApp vers le délégué avec un message pré-rempli. */
 export const waLink = (text: string) => `https://wa.me/${CONTACT.phoneIntl}?text=${encodeURIComponent(text)}`;
 export const telLink = `tel:+${CONTACT.phoneIntl}`;
 
-/** Recherche insensible aux accents sur nom, molécule, forme et catégorie. */
+/** Recherche insensible aux accents sur nom, description et mots-clés. */
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 export function matches(p: Product, q: string) {
   if (!q.trim()) return true;
-  const hay = norm([p.name, p.molecule, p.form, categoryOf(p.category).name, p.tabs.indications].join(' '));
+  const hay = norm([p.name, p.desc, p.keys].join(' '));
   return norm(q).split(/\s+/).every((w) => hay.includes(w));
 }

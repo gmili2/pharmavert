@@ -5,10 +5,10 @@ Catalogue de produits de santé avec fiches détaillées et contact direct avec 
 
 ## Pages
 
-- `/` : accueil (recherche, gammes, points forts, produits phares, délégué)
-- `/catalogue` : recherche, gammes, filtres délivrance / forme, tri
-- `/produit/:slug` : fiche (molécule, dosage, voie, onglets indications → conservation, produits similaires)
-- `/a-propos` : mission, valeurs, engagement qualité
+- `/` : accueil (carrousel, qui sommes-nous, produits avec recherche, engagements, contact)
+- `/catalogue` : recherche et filtre « pour qui » (adultes, enfants, toute la famille)
+- `/produit/:slug` : fiche (onglets bienfaits → conservation, autres produits)
+- `/a-propos` : notre entreprise, démarche, engagements
 - `/contact` : appel, WhatsApp, formulaire envoyé via WhatsApp
 
 ## Modifier le contenu
@@ -16,10 +16,8 @@ Catalogue de produits de santé avec fiches détaillées et contact direct avec 
 Tout est dans `src/data/catalog.ts` :
 
 - `CONTACT` : nom, téléphone, horaires du délégué
-- `CATEGORIES` : gammes et couleurs
-- `PRODUCTS` : produits. **Les produits actuels sont des exemples repris de la maquette** : à remplacer
-  par la gamme réelle avec des textes validés (notice officielle).
-- `noticeUrl` : lien vers la notice PDF (placer le fichier dans `public/notices/` puis `noticeUrl: 'notices/xxx.pdf'`).
+- `PRODUCTS` : compléments alimentaires (nom, couleur, pictogramme, photo dans `public/img/`).
+  **Les textes « À compléter » (conseils d'utilisation, composition…)** sont à remplacer par ceux de l'étiquetage.
 
 ## Développement
 

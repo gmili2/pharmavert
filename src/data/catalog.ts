@@ -61,46 +61,51 @@ const tabs = (bienfaits = A_COMPLETER, conservation = CONSERVATION) =>
 
 export const PRODUCTS: Product[] = [
   {
-    slug: 'cumax', name: 'Cumax', gamme: 'Anti-inflammatoire', desc: 'Confort articulaire et confort musculaire, à base de curcumine.',
+    slug: 'cumax', name: 'Cumax', gamme: 'Anti-inflammatoire', desc: 'Souplesse articulaire et confort musculaire, à base de curcumine.',
     image: 'anti-inflammatoire.jpg', box: 'boite-cumax.webp', pack: 'Boîte de 30 gélules · voie orale', actifs: 'Curcumine · actifs naturels',
     color: '#E8891C', ink: '#A04A0C', icon: 'joint', audience: 'adulte',
-    keys: 'anti inflammatoire douleur articulation genou inflammation curcumine curcuma muscle',
-    summary: 'Complément alimentaire à base de curcumine et d’actifs naturels, pour le confort articulaire et le confort musculaire.',
-    tabs: tabs('Confort articulaire et confort musculaire.'),
+    keys: 'anti inflammatoire douleur articulation genou inflammation curcumine curcuma muscle souplesse',
+    summary: 'Cumax associe curcumine et actifs naturels pour aider à maintenir la souplesse articulaire et favoriser le confort musculaire. 1 gélule 2 fois par jour, boîte de 30 gélules, en vente en pharmacies.',
+    tabs: { ...tabs('Aide à maintenir la souplesse articulaire et favorise le confort musculaire, grâce à l’association de curcumine et d’actifs naturels.'), utilisation: '1 gélule 2 fois par jour.' },
   },
   {
-    slug: 'deconat', name: 'Deconat', gamme: 'Myorelaxant · Décontractant', desc: 'Soulage efficacement les tensions musculaires.',
-    image: 'decontractant.jpg', box: 'boite-deconat.webp', pack: 'Boîte de 30 gélules', actifs: 'Actifs naturels',
+    slug: 'deconat', name: 'Deconat', gamme: 'Myorelaxant · Décontractant', desc: 'Aide à relâcher les tensions musculaires du cou, du dos et des épaules.',
+    image: 'decontractant.jpg', box: 'boite-deconat.webp', pack: 'Boîte de 30 gélules', actifs: 'Valériane · extraits naturels',
     color: '#2D8BD0', ink: '#1A66A3', icon: 'muscle', audience: 'adulte',
-    keys: 'myorelaxant decontractant muscle dos contracture crampe tension',
-    summary: 'Complément alimentaire aux actifs naturels qui aide à détendre les muscles et à soulager les tensions musculaires.',
-    tabs: tabs('Soulage efficacement les tensions musculaires.'),
+    keys: 'myorelaxant decontractant muscle dos cou epaules contracture crampe tension courbatures valeriane stress sport',
+    summary: 'Deconat est un complément alimentaire à base de valériane et d’extraits naturels, conçu pour aider à relâcher les tensions musculaires du cou, du dos et des épaules. Il accompagne aussi les courbatures et favorise la détente et le bien-être en période de stress ou de fatigue. Il s’adresse aux adultes et aux adolescents de plus de 12 ans, y compris aux sportifs et aux personnes actives, sans effet de somnolence. Boîte de 30 gélules, en vente en pharmacies.',
+    tabs: {
+      ...tabs('Aide à relâcher les tensions musculaires du cou, du dos et des épaules. Accompagne les courbatures et favorise la détente et le bien-être en période de stress ou de fatigue, sans effet de somnolence.'),
+      utilisation: '2 gélules 2 fois par jour, après les repas, en cure de 2 à 4 semaines. Pour les adultes et les adolescents de plus de 12 ans, y compris les sportifs et les personnes actives.',
+      precautions: 'Réservé aux adultes et aux adolescents de plus de 12 ans. ' + PRECAUTIONS,
+      composition: 'Valériane et extraits naturels. Composition détaillée : à compléter avec l’étiquetage.',
+    },
   },
   {
-    slug: 'nobal', name: 'Nobal', gamme: 'Anti-ballonnement', desc: 'Élimine les gaz intestinaux et facilite la digestion.',
-    image: 'anti-ballonnement.jpg', box: 'boite-nobal.webp', pack: 'Boîte de 30 gélules · poids net ≈ 12,5 g', actifs: 'Charbon végétal + E.S. de fenouil + E.S. de carvi',
+    slug: 'nobal', name: 'Nobal', gamme: 'Anti-ballonnement', desc: 'Aide à réduire les ballonnements et les gaz, pour une digestion légère.',
+    image: 'anti-ballonnement.jpg', box: 'boite-nobal.webp', pack: 'Boîte de 30 gélules · poids net ≈ 12,5 g', actifs: 'Charbon végétal activé + E.S. de fenouil + E.S. de carvi',
     color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'famille',
     keys: 'anti ballonnement digestion ventre estomac gaz charbon fenouil carvi',
-    summary: 'Complément alimentaire au charbon végétal, à l’extrait sec de fenouil et à l’extrait sec de carvi, pour un ventre plus léger.',
-    tabs: { ...tabs('Élimine les gaz intestinaux et facilite la digestion.'), composition: 'Charbon végétal, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
+    summary: 'Nobal associe le charbon végétal activé aux extraits naturels de fenouil et de carvi. Il aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable. Boîte de 30 gélules, en vente en pharmacies.',
+    tabs: { ...tabs('Aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable.'), composition: 'Charbon végétal activé, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
   },
   {
-    slug: 'ociamag', name: 'Ociamag 375 mg', gamme: 'Magnésium', desc: 'Magnésium et vitamine B6 : détente et équilibre, physique et intellectuel.',
+    slug: 'ociamag', name: 'Ociamag 375 mg', gamme: 'Magnésium', desc: 'Magnésium 375 mg et vitamine B6 pour soutenir votre équilibre au quotidien.',
     image: 'magnesium.jpg', box: 'boite-ociamag.webp', pack: 'Boîte de 30 gélules', actifs: 'Magnésium 375 mg · vitamine B6',
     color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte', isNew: true,
-    keys: 'magnesium mg vitamine b6 fatigue stress detente equilibre sommeil',
-    summary: 'Complément alimentaire associant 375 mg de magnésium et de la vitamine B6, pour la détente et l’équilibre, physique et intellectuel.',
+    keys: 'magnesium mg vitamine b6 fatigue stress detente equilibre sommeil nerveux',
+    summary: 'Ociamag associe magnésium (375 mg) et vitamine B6 pour soutenir votre équilibre au quotidien. Le magnésium contribue à réduire la fatigue et participe au bon fonctionnement du système nerveux, avec le soutien de la vitamine B6. Un complément alimentaire Pharma Vert, en vente en pharmacies.',
     tabs: {
-      ...tabs('Détente et équilibre, physique et intellectuel. Le magnésium contribue à réduire la fatigue, au fonctionnement normal du système nerveux et au fonctionnement normal des muscles.'),
+      ...tabs('Soutient votre équilibre au quotidien. Le magnésium contribue à réduire la fatigue et participe au bon fonctionnement du système nerveux, avec le soutien de la vitamine B6.'),
       composition: 'Magnésium 375 mg, vitamine B6. Composition détaillée : à compléter avec l’étiquetage.',
     },
   },
   {
-    slug: 'stimulant-appetit', name: 'Stimulant d’appétit', desc: 'Aide à retrouver le plaisir de manger.',
-    image: 'stimulant-appetit.jpg', color: '#D23A7E', ink: '#AD2263', icon: 'fork', audience: 'enfant',
-    keys: 'appetit enfant manger croissance',
-    summary: 'Complément alimentaire pour aider à retrouver le plaisir de manger.',
-    tabs: tabs(),
+    slug: 'grofen', name: 'Grofen', gamme: 'Stimulant d’appétit', desc: 'Fenugrec et 11 vitamines pour le bien-être général et la vitalité.',
+    image: 'stimulant-appetit.jpg', actifs: 'Fenugrec · 11 vitamines', color: '#D23A7E', ink: '#AD2263', icon: 'fork', audience: 'enfant',
+    keys: 'appetit enfant manger croissance fenugrec vitamines vitalite fatigue',
+    summary: 'Grofen associe le fenugrec à 11 vitamines pour accompagner votre quotidien. Cette formule complète contribue à votre bien-être général et à votre vitalité. Un complément alimentaire Pharma Vert, en vente en pharmacies.',
+    tabs: { ...tabs('Formule complète associant le fenugrec à 11 vitamines, qui contribue au bien-être général et à la vitalité.'), composition: 'Fenugrec, 11 vitamines. Composition détaillée : à compléter avec l’étiquetage.' },
   },
   {
     slug: 'sirop-toux', name: 'Sirop pour la toux', desc: 'Apaise la gorge et facilite la respiration.',
@@ -113,7 +118,7 @@ export const PRODUCTS: Product[] = [
 
 /** Anciennes adresses (avant les noms commerciaux), gardées pour les liens déjà partagés. */
 const OLD_SLUGS: Record<string, string> = {
-  'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag',
+  'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag', 'stimulant-appetit': 'grofen',
 };
 export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (OLD_SLUGS[slug] ?? slug));
 

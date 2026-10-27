@@ -65,8 +65,8 @@ export const PRODUCTS: Product[] = [
     image: 'anti-inflammatoire.jpg', box: 'boite-cumax.webp', pack: 'Boîte de 30 gélules · voie orale', actifs: 'Curcumine · actifs naturels',
     color: '#E8891C', ink: '#A04A0C', icon: 'joint', audience: 'adulte',
     keys: 'anti inflammatoire douleur articulation genou inflammation curcumine curcuma muscle souplesse',
-    summary: 'Cumax associe curcumine et actifs naturels pour aider à maintenir la souplesse articulaire et favoriser le confort musculaire. 1 gélule 2 fois par jour, boîte de 30 gélules, en vente en pharmacies.',
-    tabs: { ...tabs('Aide à maintenir la souplesse articulaire et favorise le confort musculaire, grâce à l’association de curcumine et d’actifs naturels.'), utilisation: '1 gélule 2 fois par jour.' },
+    summary: 'Cumax associe curcumine et actifs naturels pour aider à maintenir la souplesse articulaire et favoriser le confort musculaire. En traitement d’attaque, 1 gélule 2 fois par jour pendant 15 jours, puis 1 gélule par jour en entretien. Boîte de 30 gélules, en vente en pharmacies.',
+    tabs: { ...tabs('Aide à maintenir la souplesse articulaire et favorise le confort musculaire, grâce à l’association de curcumine et d’actifs naturels.'), utilisation: 'Traitement d’attaque : 1 gélule 2 fois par jour pendant 15 jours.\nTraitement d’entretien : 1 gélule par jour.' },
   },
   {
     slug: 'deconat', name: 'Deconat', gamme: 'Myorelaxant · Décontractant', desc: 'Aide à relâcher les tensions musculaires du cou, du dos et des épaules.',
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'famille',
     keys: 'anti ballonnement digestion ventre estomac gaz charbon fenouil carvi',
     summary: 'Nobal associe le charbon végétal activé aux extraits naturels de fenouil et de carvi. Il aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable. Boîte de 30 gélules, en vente en pharmacies.',
-    tabs: { ...tabs('Aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable.'), composition: 'Charbon végétal activé, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
+    tabs: { ...tabs('Aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable.'), utilisation: '1 gélule 3 fois par jour.', composition: 'Charbon végétal activé, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
   },
   {
     slug: 'ociamag', name: 'Ociamag 375 mg', gamme: 'Magnésium', desc: 'Magnésium 375 mg et vitamine B6 pour soutenir votre équilibre au quotidien.',
@@ -97,6 +97,7 @@ export const PRODUCTS: Product[] = [
     summary: 'Ociamag associe magnésium (375 mg) et vitamine B6 pour soutenir votre équilibre au quotidien. Le magnésium contribue à réduire la fatigue et participe au bon fonctionnement du système nerveux, avec le soutien de la vitamine B6. Un complément alimentaire Pharma Vert, en vente en pharmacies.',
     tabs: {
       ...tabs('Soutient votre équilibre au quotidien. Le magnésium contribue à réduire la fatigue et participe au bon fonctionnement du système nerveux, avec le soutien de la vitamine B6.'),
+      utilisation: '1 gélule par jour.',
       composition: 'Magnésium 375 mg, vitamine B6. Composition détaillée : à compléter avec l’étiquetage.',
     },
   },
@@ -105,7 +106,11 @@ export const PRODUCTS: Product[] = [
     image: 'stimulant-appetit.jpg', actifs: 'Fenugrec · 11 vitamines', color: '#D23A7E', ink: '#AD2263', icon: 'fork', audience: 'enfant',
     keys: 'appetit enfant manger croissance fenugrec vitamines vitalite fatigue',
     summary: 'Grofen associe le fenugrec à 11 vitamines pour accompagner votre quotidien. Cette formule complète contribue à votre bien-être général et à votre vitalité. Un complément alimentaire Pharma Vert, en vente en pharmacies.',
-    tabs: { ...tabs('Formule complète associant le fenugrec à 11 vitamines, qui contribue au bien-être général et à la vitalité.'), composition: 'Fenugrec, 11 vitamines. Composition détaillée : à compléter avec l’étiquetage.' },
+    tabs: {
+      ...tabs('Formule complète associant le fenugrec à 11 vitamines, qui contribue au bien-être général et à la vitalité.'),
+      utilisation: 'Gélules : 1 à 2 gélules par jour.\nSirop :\n• Avant 5 ans : ½ cuillère à café par jour.\n• De 5 à 12 ans : 1 cuillère à café par jour.\n• Adulte : 2 cuillères à café par jour.',
+      composition: 'Fenugrec, 11 vitamines. Composition détaillée : à compléter avec l’étiquetage.',
+    },
   },
   {
     slug: 'sirop-toux', name: 'Sirop pour la toux', desc: 'Apaise la gorge et facilite la respiration.',

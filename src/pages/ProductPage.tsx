@@ -83,7 +83,7 @@ export default function ProductPage() {
             </div>
             <div className="tab-panel" role="tabpanel">
               <h2>{TABS.find(([k]) => k === tab)![1]}</h2>
-              <p>{p.tabs[tab]}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{p.tabs[tab]}</p>
             </div>
           </div>
 

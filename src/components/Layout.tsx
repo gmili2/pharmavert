@@ -64,7 +64,7 @@ function Footer() {
         <a className="footer-phone" href={telLink}><Icon name="phone" size={16} /> {CONTACT.phone}</a>
       </div>
       <div className="wrap footer-legal">
-        <span>© {new Date().getFullYear()} Pharma Vert · Une entreprise marocaine</span>
+        <span>© {new Date().getFullYear()} Pharma Vert · La qualité, la confiance et le bien-être au naturel.</span>
         <span>Les compléments alimentaires ne remplacent pas une alimentation variée et équilibrée ni l’avis d’un professionnel de santé.</span>
       </div>
     </footer>

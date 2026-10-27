@@ -72,8 +72,8 @@ export default function Home() {
         <div className="wrap split">
           <div className="split-text">
             <Kicker center={false}>Qui sommes-nous ?</Kicker>
-            <h2 id="ent-t">Une société marocaine au service de votre santé</h2>
-            <p className="prose"><strong>Pharma Vert</strong> est une société marocaine spécialisée dans la fabrication et la commercialisation de <strong>compléments alimentaires</strong>. Nous mettons notre expertise et notre savoir-faire au service de votre bien-être, en proposant des produits de qualité, sûrs et efficaces, adaptés aux besoins de toute la famille.</p>
+            <h2 id="ent-t">Votre partenaire santé et bien-être au Maroc</h2>
+            <p className="prose"><strong>Pharma Vert</strong> est une société marocaine spécialisée dans la fabrication et la commercialisation de <strong>compléments alimentaires</strong> et de produits dédiés au bien-être. Notre mission est de proposer des solutions adaptées aux besoins quotidiens des enfants et des adultes, en alliant qualité, innovation et savoir-faire.</p>
             <p className="flag-line"><MoroccoFlag /> Fabriqué et commercialisé au Maroc</p>
           </div>
           <img src={img('laboratoire.jpg')} alt="Technicien en laboratoire, mention Qualité, Innovation, Bien-être et ingrédients naturels" className="split-img" />

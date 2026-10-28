@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { CONTACT, telLink, waLink } from '../data/catalog';
-import { Icon, Logo, WhatsAppIcon } from './Art';
+import { Icon, Logo, SocialLinks, WhatsAppIcon } from './Art';
 
 const LINKS = [
   { to: '/', label: 'Accueil', end: true },
@@ -61,7 +61,10 @@ function Footer() {
         <nav aria-label="Liens du pied de page" className="footer-nav">
           {LINKS.map((l) => <Link key={l.to} to={l.to}>{l.label}</Link>)}
         </nav>
-        <a className="footer-phone" href={telLink}><Icon name="phone" size={16} /> {CONTACT.phone}</a>
+        <span className="footer-contact">
+          <a className="footer-phone" href={telLink}><Icon name="phone" size={16} /> {CONTACT.phone}</a>
+          <SocialLinks className="social footer-social" />
+        </span>
       </div>
       <div className="wrap footer-legal">
         <span>© {new Date().getFullYear()} Pharma Vert · La qualité, la confiance et le bien-être au naturel.</span>

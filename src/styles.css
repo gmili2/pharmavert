@@ -234,6 +234,13 @@ a.contact-card:hover { box-shadow: var(--shadow); color: var(--ink); }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 4px; }
 .footer-nav a { color: var(--pale); text-decoration: none; font-size: 14px; padding: 10px; }
 .footer-nav a:hover, .footer-phone:hover { color: #fff; }
+.footer-contact { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.social { display: inline-flex; gap: 8px; }
+.social a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--pale); background: rgba(220, 235, 210, .1); transition: background .2s, color .2s; }
+.social a:hover { background: var(--lime); color: var(--green-night); }
+.contact-icon-linkedin { background: #0A66C2; color: #fff; }
+.contact-icon-facebook { background: #1877F2; color: #fff; }
+.contact-icon-instagram { background: radial-gradient(circle at 30% 110%, #FDCB52, #FD8D32 25%, #E8344F 50%, #C12F89 75%, #5B4FE9); color: #fff; }
 .footer-phone { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-weight: 800; text-decoration: none; }
 .footer-legal { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; border-top: 1px solid rgba(220, 235, 210, .15); padding-top: 14px; padding-bottom: 20px; font-size: 12px; color: #A9BFA2; }
 

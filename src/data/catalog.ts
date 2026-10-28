@@ -11,6 +11,14 @@ export const CONTACT = {
   hours: 'Du lundi au samedi, 9h – 18h',
 };
 
+/** Réseaux sociaux : une adresse vide masque l'icône sur le site. */
+type Social = { key: 'linkedin' | 'facebook' | 'instagram'; name: string; url: string };
+export const SOCIALS = ([
+  { key: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/company/pharmavert/' },
+  { key: 'facebook', name: 'Facebook', url: '' },
+  { key: 'instagram', name: 'Instagram', url: '' },
+] as Social[]).filter((s) => s.url);
+
 /** Chemin d'une image de public/img, compatible avec le sous-dossier GitHub Pages. */
 export const img = (file: string) => `${import.meta.env.BASE_URL}img/${file}`;
 

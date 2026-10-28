@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CONTACT, telLink, waLink } from '../data/catalog';
-import { Icon, MoroccoFlag, WhatsAppIcon } from './Art';
+import { CONTACT, SOCIALS, telLink, waLink } from '../data/catalog';
+import { Icon, MoroccoFlag, SocialIcon, WhatsAppIcon } from './Art';
 
 /** Sur-titre centré entre deux traits, comme sur la maquette. */
 export function Kicker({ children, center = true }: { children: React.ReactNode; center?: boolean }) {
@@ -94,6 +94,12 @@ export function ContactBlock({ title = 'Une question ? Écrivez-nous ou appelez'
               <span className="contact-icon"><Icon name="clock" size={22} /></span>
               <span><small>Disponibilité</small><b>{CONTACT.hours}</b></span>
             </div>
+            {SOCIALS.map((s) => (
+              <a key={s.key} className="contact-card" href={s.url} target="_blank" rel="noreferrer">
+                <span className={`contact-icon contact-icon-${s.key}`}><SocialIcon name={s.key} size={22} /></span>
+                <span><small>{s.name}</small><b>Suivez Pharma Vert</b></span>
+              </a>
+            ))}
           </div>
           <form className="form" onSubmit={send}>
             <label>Nom complet<input required value={f.name} onChange={up('name')} autoComplete="name" /></label>

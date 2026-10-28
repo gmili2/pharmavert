@@ -56,6 +56,9 @@ const A_COMPLETER = 'À compléter avec le texte figurant sur l’étiquetage du
 const CONSERVATION = 'À conserver dans un endroit sec, à température ambiante, à l’abri de la lumière et hors de la portée des enfants.';
 const PRECAUTIONS = 'Ne pas dépasser la dose journalière recommandée. Un complément alimentaire ne remplace pas une alimentation variée et équilibrée ni un mode de vie sain. Demandez conseil à votre médecin ou pharmacien en cas de grossesse, d’allaitement ou de traitement en cours.';
 
+/** Composition intégrale imprimée sur les boîtes Respinat (adultes et enfants). */
+const RESPINAT_COMPO = 'Carbomère 980, glycérine, fructose, eau purifiée, extraits hydroglycérinés de mauve (Malva sylvestris), de camomille sauvage (Cladanthus mixtus), de sureau noir (Sambucus nigra), d’échinacée (Echinacea purpurea), de propolis, de guimauve (Althaea officinalis L.), de bouillon-blanc (Verbascum thapsus) et de myrte (Myrtus communis L.), gomme xanthane, menthol, acide ascorbique (vitamine C), huile essentielle d’eucalyptus, arôme orange.';
+
 const tabs = (bienfaits = A_COMPLETER, conservation = CONSERVATION) =>
   ({ bienfaits, utilisation: A_COMPLETER, precautions: PRECAUTIONS, composition: A_COMPLETER, conservation });
 
@@ -102,28 +105,56 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
-    slug: 'grofen', name: 'Grofen', gamme: 'Stimulant d’appétit', desc: 'Fenugrec et 11 vitamines pour le bien-être général et la vitalité.',
-    image: 'stimulant-appetit.jpg', actifs: 'Fenugrec · 11 vitamines', color: '#D23A7E', ink: '#AD2263', icon: 'fork', audience: 'enfant',
-    keys: 'appetit enfant manger croissance fenugrec vitamines vitalite fatigue',
-    summary: 'Grofen associe le fenugrec à 11 vitamines pour accompagner votre quotidien. Cette formule complète contribue à votre bien-être général et à votre vitalité. Un complément alimentaire Pharma Vert, en vente en pharmacies.',
+    slug: 'grofen', name: 'Grofen gélules', gamme: 'Stimulant d’appétit', desc: 'Fenugrec et 11 vitamines : stimule l’appétit naturellement et relance l’énergie.',
+    image: 'stimulant-appetit.jpg', box: 'boite-grofen.webp', pack: 'Boîte de 30 gélules', actifs: 'Fenugrec · 11 vitamines',
+    color: '#E8891C', ink: '#1E6B34', icon: 'fork', audience: 'adulte',
+    keys: 'appetit manger fenugrec vitamines vitalite fatigue energie gelules',
+    summary: 'Grofen associe le fenugrec à 11 vitamines pour stimuler l’appétit naturellement et relancer l’énergie. Cette formule complète contribue au bien-être général et à la vitalité. 1 à 2 gélules par jour, boîte de 30 gélules, en vente en pharmacies.',
     tabs: {
-      ...tabs('Formule complète associant le fenugrec à 11 vitamines, qui contribue au bien-être général et à la vitalité.'),
-      utilisation: 'Gélules : 1 à 2 gélules par jour.\nSirop :\n• Avant 5 ans : ½ cuillère à café par jour.\n• De 5 à 12 ans : 1 cuillère à café par jour.\n• Adulte : 2 cuillères à café par jour.',
+      ...tabs('Stimule l’appétit naturellement et relance l’énergie. Formule complète associant le fenugrec à 11 vitamines, qui contribue au bien-être général et à la vitalité.'),
+      utilisation: '1 à 2 gélules par jour.',
       composition: 'Fenugrec, 11 vitamines. Composition détaillée : à compléter avec l’étiquetage.',
     },
   },
   {
-    slug: 'sirop-toux', name: 'Sirop pour la toux', desc: 'Apaise la gorge et facilite la respiration.',
-    image: 'sirop-toux.jpg', color: '#2D8BD0', ink: '#1A66A3', icon: 'cough', audience: 'enfant', isNew: true,
-    keys: 'toux gorge rhume respiration sirop enfant',
-    summary: 'Sirop pour apaiser la gorge irritée et accompagner le confort respiratoire.',
-    tabs: tabs(A_COMPLETER, 'Bien refermer le flacon après usage. ' + CONSERVATION),
+    slug: 'grofen-sirop', name: 'Grofen sirop', gamme: 'Stimulant d’appétit · Solution buvable', desc: 'Fenugrec, gentiane et 11 vitamines, pour toute la famille dès le plus jeune âge.',
+    image: 'stimulant-appetit.jpg', box: 'boite-grofen-sirop.webp', pack: 'Flacon de 200 mL · solution buvable', actifs: 'Fenugrec · gentiane · 11 vitamines',
+    color: '#E8891C', ink: '#1E6B34', icon: 'fork', audience: 'famille', isNew: true,
+    keys: 'appetit enfant manger croissance fenugrec gentiane vitamines vitalite fatigue energie sirop solution buvable',
+    summary: 'Grofen sirop est un complexe de fenugrec, de gentiane et de vitamines, conçu pour soutenir la vitalité et stimuler l’appétit. Il convient aux enfants comme aux adultes, avec une posologie adaptée à l’âge. Flacon de 200 mL, en vente en pharmacies.',
+    tabs: {
+      ...tabs('Stimule l’appétit naturellement et relance l’énergie. Complexe de fenugrec, de gentiane et de vitamines, conçu pour soutenir la vitalité.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      utilisation: '• Avant 5 ans : ½ cuillère à café par jour.\n• De 5 à 12 ans : 1 cuillère à café par jour.\n• Adulte : 2 cuillères à café par jour.\nDurée d’utilisation : prendre l’avis d’un professionnel de santé.',
+      composition: 'Fenugrec, gentiane, 11 vitamines. Composition détaillée : à compléter avec l’étiquetage.',
+    },
+  },
+  {
+    slug: 'respinat-adulte', name: 'Respinat Adultes', gamme: 'Confort respiratoire · Sans sucre', desc: 'Miel, propolis, vitamine C et plantes, à la fraîcheur du menthol.',
+    image: 'sirop-toux.jpg', box: 'boite-respinat-adulte.webp', pack: 'Flacon de 200 mL · arôme orange', actifs: 'Miel · propolis · vitamine C · plantes · menthol',
+    color: '#1F9A4E', ink: '#157038', icon: 'cough', audience: 'adulte', isNew: true,
+    keys: 'toux gorge rhume respiration respiratoire sirop miel propolis vitamine c echinacee eucalyptus thym mauve camomille sureau guimauve menthol sans sucre adulte',
+    summary: 'Respinat Adultes est une formule naturelle sans sucre, riche en actifs naturels. Elle associe miel, propolis, vitamine C et plantes sélectionnées (échinacée, eucalyptus, thym, mauve, camomille, sureau, guimauve) à la fraîcheur du menthol. Pensé pour votre bien-être respiratoire, il se présente en flacon de 200 mL. Une référence Pharma Vert.',
+    tabs: {
+      ...tabs('Formule naturelle sans sucre pensée pour le bien-être et le confort respiratoire : miel, propolis, vitamine C et plantes sélectionnées (échinacée, eucalyptus, thym, mauve, camomille, sureau, guimauve), à la fraîcheur du menthol.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      composition: RESPINAT_COMPO,
+    },
+  },
+  {
+    slug: 'respinat-enfant', name: 'Respinat Enfants', gamme: 'Confort respiratoire · Sans sucre', desc: 'Miel, propolis, vitamine C et plantes douces pour le bien-être respiratoire des petits.',
+    image: 'sirop-toux.jpg', box: 'boite-respinat-enfant.webp', pack: 'Flacon de 125 mL · arôme orange', actifs: 'Miel · propolis · vitamine C · plantes douces',
+    color: '#1BA3D6', ink: '#0F76A0', icon: 'cough', audience: 'enfant', isNew: true,
+    keys: 'toux gorge rhume respiration respiratoire sirop enfant bebe miel propolis vitamine c echinacee eucalyptus mauve camomille sureau guimauve menthol sans sucre',
+    summary: 'Pour accompagner les petits au quotidien, Respinat Enfants réunit miel, propolis, vitamine C et des plantes douces dans une formule naturelle sans sucre. Mauve, camomille sauvage, sureau noir, échinacée, guimauve, eucalyptus et menthol prennent soin de leur bien-être respiratoire. Flacon de 125 mL, de la gamme Pharma Vert.',
+    tabs: {
+      ...tabs('Formule naturelle sans sucre qui accompagne le bien-être respiratoire des petits au quotidien : miel, propolis, vitamine C et plantes douces (mauve, camomille sauvage, sureau noir, échinacée, guimauve, eucalyptus), avec du menthol.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      composition: RESPINAT_COMPO,
+    },
   },
 ];
 
 /** Anciennes adresses (avant les noms commerciaux), gardées pour les liens déjà partagés. */
 const OLD_SLUGS: Record<string, string> = {
-  'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag', 'stimulant-appetit': 'grofen',
+  'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag', 'stimulant-appetit': 'grofen', 'sirop-toux': 'respinat-enfant',
 };
 export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (OLD_SLUGS[slug] ?? slug));
 

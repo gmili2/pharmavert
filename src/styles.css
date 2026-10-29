@@ -181,6 +181,7 @@ a.contact-card:hover { box-shadow: var(--shadow); color: var(--ink); }
 .contact-card-main:hover { background: var(--green-dark); color: #fff !important; }
 .contact-card-main small { color: var(--pale); }
 .contact-phone { font-size: 20px !important; font-weight: 800; }
+.contact-email { overflow-wrap: anywhere; }
 .contact-icon { width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background: var(--mint); color: var(--green); display: grid; place-items: center; }
 .contact-card-main .contact-icon { background: var(--lime); color: var(--green-dark); }
 .contact-icon-wa { background: #DCF8E6; color: #128C4A; }

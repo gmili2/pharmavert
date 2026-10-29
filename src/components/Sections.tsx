@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CONTACT, SOCIALS, telLink, waLink } from '../data/catalog';
+import { CONTACT, recruitmentLink, SOCIALS, telLink, waLink } from '../data/catalog';
 import { Icon, MoroccoFlag, SocialIcon, WhatsAppIcon } from './Art';
 
 /** Sur-titre centré entre deux traits, comme sur la maquette. */
@@ -94,6 +94,10 @@ export function ContactBlock({ title = 'Une question ? Écrivez-nous ou appelez'
               <span className="contact-icon"><Icon name="clock" size={22} /></span>
               <span><small>Disponibilité</small><b>{CONTACT.hours}</b></span>
             </div>
+            <a className="contact-card" href={recruitmentLink}>
+              <span className="contact-icon"><Icon name="mail" size={22} /></span>
+              <span><small>Recrutement · envoyez votre CV</small><b className="contact-email">{CONTACT.recruitmentEmail}</b></span>
+            </a>
             {SOCIALS.map((s) => (
               <a key={s.key} className="contact-card" href={s.url} target="_blank" rel="noreferrer">
                 <span className={`contact-icon contact-icon-${s.key}`}><SocialIcon name={s.key} size={22} /></span>

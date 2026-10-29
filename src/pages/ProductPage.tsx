@@ -3,7 +3,8 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { AUDIENCES, PRODUCTS, img, productBySlug, telLink, waLink } from '../data/catalog';
 import { Icon, ProductBadge, WhatsAppIcon } from '../components/Art';
 import { ProductCard, boxBg } from '../components/ProductCard';
-import { useTitle } from '../seo';
+import { canonical, absUrl, useSeo } from '../seo';
+import NotFound from './NotFound';
 
 const TABS = [
   ['bienfaits', 'Bienfaits'],
@@ -17,19 +18,42 @@ export default function ProductPage() {
   const { slug = '' } = useParams();
   const p = productBySlug(slug);
   const [tab, setTab] = useState<(typeof TABS)[number][0]>('bienfaits');
-  useTitle(p ? `${p.name} · Pharma Vert` : 'Produit introuvable · Pharma Vert');
+  if (!p) return <NotFound />;
+  return <ProductView slug={slug} p={p} tab={tab} setTab={setTab} />;
+}
 
-  if (!p) {
-    return (
-      <div className="wrap sec">
-        <div className="empty">
-          <h1>Produit introuvable</h1>
-          <p className="muted">Ce produit n’existe pas ou n’est plus au catalogue.</p>
-          <Link className="btn btn-pill" to="/catalogue">Voir nos produits</Link>
-        </div>
-      </div>
-    );
-  }
+function ProductView({ slug, p, tab, setTab }: { slug: string; p: NonNullable<ReturnType<typeof productBySlug>>; tab: (typeof TABS)[number][0]; setTab: (t: (typeof TABS)[number][0]) => void }) {
+  const description = `${p.name}${p.gamme ? ` (${p.gamme.toLowerCase()})` : ''} : ${p.desc}${p.pack ? ` ${p.pack}.` : ''} Complément alimentaire Pharma Vert en vente en pharmacies au Maroc.`;
+  useSeo({
+    title: `${p.name}${p.gamme ? ` – ${p.gamme}` : ''} | Pharma Vert`,
+    description: description.length > 170 ? description.slice(0, 167).replace(/\s+\S*$/, '') + '…' : description,
+    path: `/produit/${p.slug}`,
+    image: img(p.box ?? p.image),
+    type: 'product',
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: p.name,
+        description: p.summary,
+        image: absUrl(img(p.box ?? p.image)),
+        url: canonical(`/produit/${p.slug}`),
+        category: p.gamme ? `Complément alimentaire · ${p.gamme}` : 'Complément alimentaire',
+        brand: { '@type': 'Brand', name: 'Pharma Vert' },
+        manufacturer: { '@id': canonical('/') + '#organization' },
+        ...(p.actifs ? { additionalProperty: [{ '@type': 'PropertyValue', name: 'Actifs', value: p.actifs }] } : {})
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: canonical('/') },
+          { '@type': 'ListItem', position: 2, name: 'Nos produits', item: canonical('/catalogue') },
+          { '@type': 'ListItem', position: 3, name: p.name, item: canonical(`/produit/${p.slug}`) }
+        ]
+      }
+    ]
+  });
 
   // Ancienne adresse : on bascule sur l'adresse actuelle du produit.
   if (p.slug !== slug) return <Navigate to={`/produit/${p.slug}`} replace />;

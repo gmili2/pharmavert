@@ -2,10 +2,20 @@ import { useSearchParams } from 'react-router-dom';
 import { AUDIENCES, PRODUCTS, matches } from '../data/catalog';
 import { ProductCard } from '../components/ProductCard';
 import { Kicker, NoResults, SearchBar } from '../components/Sections';
-import { useTitle } from '../seo';
+import { canonical, useSeo } from '../seo';
 
 export default function Catalog() {
-  useTitle('Nos produits · Pharma Vert');
+  useSeo({
+    title: 'Nos compléments alimentaires : articulations, digestion, magnésium, appétit | Pharma Vert',
+    description: `Tous les compléments alimentaires Pharma Vert : ${PRODUCTS.map((p) => p.name).join(', ')}. Pour adultes, enfants et toute la famille, en vente en pharmacies au Maroc.`,
+    path: '/catalogue',
+    jsonLd: [{
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Compléments alimentaires Pharma Vert',
+      itemListElement: PRODUCTS.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: canonical(`/produit/${p.slug}`), name: p.name }))
+    }]
+  });
   const [params, setParams] = useSearchParams();
   const q = params.get('q') ?? '';
   const pour = params.get('pour') ?? '';

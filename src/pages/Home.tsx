@@ -4,7 +4,7 @@ import { PRODUCTS, img, matches } from '../data/catalog';
 import { Icon, MoroccoFlag } from '../components/Art';
 import { ProductCard } from '../components/ProductCard';
 import { ContactBlock, Engagements, GreenBand, Kicker, NoResults, SearchBar } from '../components/Sections';
-import { useTitle } from '../seo';
+import { useSeo } from '../seo';
 
 const SLIDES = 2;
 
@@ -60,7 +60,11 @@ function Carousel() {
 }
 
 export default function Home() {
-  useTitle('Pharma Vert : compléments alimentaires pour toute la famille');
+  useSeo({
+    title: 'Pharma Vert : compléments alimentaires naturels pour toute la famille au Maroc',
+    description: 'Pharma Vert, laboratoire marocain de compléments alimentaires naturels pour enfants et adultes : articulations, digestion, magnésium, appétit, confort respiratoire. En vente en pharmacies.',
+    path: '/'
+  });
   const [q, setQ] = useState('');
   const results = PRODUCTS.filter((p) => matches(p, q));
 

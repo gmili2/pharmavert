@@ -1,7 +1,7 @@
 import { img } from '../data/catalog';
 import { MoroccoFlag } from '../components/Art';
 import { Engagements, GreenBand, Kicker } from '../components/Sections';
-import { useTitle } from '../seo';
+import { useSeo } from '../seo';
 
 const STEPS = [
   ['Sélection', 'Des ingrédients choisis pour répondre à un besoin précis du quotidien.'],
@@ -11,7 +11,12 @@ const STEPS = [
 ];
 
 export default function About() {
-  useTitle('Notre entreprise · Pharma Vert');
+  useSeo({
+    title: 'Notre entreprise : laboratoire marocain de compléments alimentaires | Pharma Vert',
+    description: 'Pharma Vert sélectionne, fabrique au Maroc et contrôle des compléments alimentaires naturels, accompagnés par un délégué médical auprès des pharmacies et des professionnels de santé.',
+    path: '/a-propos',
+    image: '/img/laboratoire.jpg'
+  });
   return (
     <>
       <section className="sec sec-soft page-top">

@@ -25,6 +25,8 @@ RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
 RewriteRule ^ / [L,R=301]
 RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html[\s?] [NC]
 RewriteCond %1 !^404$
+# Fichier de validation Google Search Console : servi tel quel, sans redirection.
+RewriteCond %1 !^google[0-9a-f]+$
 RewriteRule ^ /%1 [L,R=301]
 
 # Barre oblique finale superflue → adresse sans barre (sauf vrais dossiers, pour éviter une boucle).

@@ -16,7 +16,7 @@ type Social = { key: 'linkedin' | 'facebook' | 'instagram'; name: string; url: s
 export const SOCIALS = ([
   { key: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/company/pharmavert/' },
   { key: 'facebook', name: 'Facebook', url: '' },
-  { key: 'instagram', name: 'Instagram', url: '' },
+  { key: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/pharmavert/' },
 ] as Social[]).filter((s) => s.url);
 
 /** Chemin d'une image de public/img, compatible avec le sous-dossier GitHub Pages. */

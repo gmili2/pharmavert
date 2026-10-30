@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PRODUCTS, img, matches } from '../data/catalog';
+import { img, matches, useProducts } from '../data/catalog';
 import { Icon, MoroccoFlag } from '../components/Art';
 import { ProductCard } from '../components/ProductCard';
 import { ContactBlock, Engagements, GreenBand, Kicker, NoResults, SearchBar } from '../components/Sections';
@@ -66,7 +66,7 @@ export default function Home() {
     path: '/'
   });
   const [q, setQ] = useState('');
-  const results = PRODUCTS.filter((p) => matches(p, q));
+  const results = useProducts().filter((p) => matches(p, q));
 
   return (
     <>

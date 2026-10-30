@@ -1,4 +1,7 @@
 // Contenu du site : tout ce qui change souvent (produits, contact) est ici.
+// Les produits se gèrent dans le back-office (/admin) ; DEFAULT_PRODUCTS ne sert qu'à la première installation.
+import { useSyncExternalStore } from 'react';
+
 // Les textes produits sont des PREMIÈRES VERSIONS : bienfaits, conseils d'utilisation et composition
 // sont à remplacer par les textes validés figurant sur l'étiquetage de chaque complément.
 
@@ -21,8 +24,8 @@ export const SOCIALS = ([
   { key: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/pharmavert/' },
 ] as Social[]).filter((s) => s.url);
 
-/** Chemin d'une image de public/img, compatible avec le sous-dossier GitHub Pages. */
-export const img = (file: string) => `${import.meta.env.BASE_URL}img/${file}`;
+/** Chemin d'une image de public/img (ou chemin absolu d'une image envoyée depuis le back-office). */
+export const img = (file: string) => (/^(https?:|\/)/.test(file) ? file : `${import.meta.env.BASE_URL}img/${file}`);
 
 export type IconKey = 'joint' | 'muscle' | 'stomach' | 'mg' | 'fork' | 'cough';
 export type Audience = 'adulte' | 'enfant' | 'famille';
@@ -34,7 +37,7 @@ export type Product = {
   /** Gamme affichée sous le nom commercial (ex. Anti-inflammatoire). */
   gamme?: string;
   desc: string;
-  /** Photo d'ambiance. */
+  /** Photo d'ambiance (utilisée s'il n'y a pas de photo de boîte). */
   image: string;
   /** Photo de la boîte détourée (PNG/WebP transparent), affichée à la place de la photo d'ambiance. */
   box?: string;
@@ -63,8 +66,8 @@ export const AUDIENCES: { slug: Audience | ''; name: string }[] = [
 ];
 
 const A_COMPLETER = 'À compléter avec le texte figurant sur l’étiquetage du produit.';
-const CONSERVATION = 'À conserver dans un endroit sec, à température ambiante, à l’abri de la lumière et hors de la portée des enfants.';
-const PRECAUTIONS = 'Ne pas dépasser la dose journalière recommandée. Un complément alimentaire ne remplace pas une alimentation variée et équilibrée ni un mode de vie sain. Demandez conseil à votre médecin ou pharmacien en cas de grossesse, d’allaitement ou de traitement en cours.';
+export const CONSERVATION = 'À conserver dans un endroit sec, à température ambiante, à l’abri de la lumière et hors de la portée des enfants.';
+export const PRECAUTIONS = 'Ne pas dépasser la dose journalière recommandée. Un complément alimentaire ne remplace pas une alimentation variée et équilibrée ni un mode de vie sain. Demandez conseil à votre médecin ou pharmacien en cas de grossesse, d’allaitement ou de traitement en cours.';
 
 /** Composition intégrale imprimée sur les boîtes Respinat (adultes et enfants). */
 const RESPINAT_COMPO = 'Carbomère 980, glycérine, fructose, eau purifiée, extraits hydroglycérinés de mauve (Malva sylvestris), de camomille sauvage (Cladanthus mixtus), de sureau noir (Sambucus nigra), d’échinacée (Echinacea purpurea), de propolis, de guimauve (Althaea officinalis L.), de bouillon-blanc (Verbascum thapsus) et de myrte (Myrtus communis L.), gomme xanthane, menthol, acide ascorbique (vitamine C), huile essentielle d’eucalyptus, arôme orange.';
@@ -72,7 +75,7 @@ const RESPINAT_COMPO = 'Carbomère 980, glycérine, fructose, eau purifiée, ext
 const tabs = (bienfaits = A_COMPLETER, conservation = CONSERVATION) =>
   ({ bienfaits, utilisation: A_COMPLETER, precautions: PRECAUTIONS, composition: A_COMPLETER, conservation });
 
-export const PRODUCTS: Product[] = [
+export const DEFAULT_PRODUCTS: Product[] = [
   {
     slug: 'cumax', name: 'Cumax', gamme: 'Anti-inflammatoire', desc: 'Souplesse articulaire et confort musculaire, à base de curcumine.',
     image: 'anti-inflammatoire.jpg', box: 'boite-cumax.webp', pack: 'Boîte de 30 gélules · voie orale', actifs: 'Curcumine · actifs naturels',
@@ -168,7 +171,27 @@ export const PRODUCTS: Product[] = [
 const OLD_SLUGS: Record<string, string> = {
   'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag', 'stimulant-appetit': 'grofen', 'sirop-toux': 'respinat-enfant',
 };
-export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (OLD_SLUGS[slug] ?? slug));
+export const productBySlug = (slug: string, list = products) => list.find((p) => p.slug === (OLD_SLUGS[slug] ?? slug));
+
+/** Photo affichée pour un produit : la boîte détourée, sinon la photo d'ambiance. */
+export const productPhoto = (p: Product) => img(p.box || p.image);
+
+// Liste courante des produits : celle du pré-rendu, puis celle du back-office (api/produits.php).
+let products = DEFAULT_PRODUCTS;
+const listeners = new Set<() => void>();
+export const getProducts = () => products;
+export function setProducts(list: Product[]) {
+  products = list;
+  listeners.forEach((l) => l());
+}
+const subscribe = (l: () => void) => {
+  listeners.add(l);
+  return () => { listeners.delete(l); };
+};
+export const useProducts = () => useSyncExternalStore(subscribe, getProducts, getProducts);
+
+/** Adresse de l'API du back-office (PHP, sur l'hébergement cPanel). */
+export const api = (file: string) => `${import.meta.env.BASE_URL}api/${file}`;
 
 /** Lien WhatsApp vers le délégué avec un message pré-rempli. */
 export const waLink = (text: string) => `https://wa.me/${CONTACT.phoneIntl}?text=${encodeURIComponent(text)}`;

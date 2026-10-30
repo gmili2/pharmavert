@@ -1,10 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
-import { AUDIENCES, PRODUCTS, matches } from '../data/catalog';
+import { AUDIENCES, matches, useProducts } from '../data/catalog';
 import { ProductCard } from '../components/ProductCard';
 import { Kicker, NoResults, SearchBar } from '../components/Sections';
 import { canonical, useSeo } from '../seo';
 
 export default function Catalog() {
+  const PRODUCTS = useProducts();
   useSeo({
     title: 'Nos compléments alimentaires : articulations, digestion, magnésium, appétit | Pharma Vert',
     description: `Tous les compléments alimentaires Pharma Vert : ${PRODUCTS.map((p) => p.name).join(', ')}. Pour adultes, enfants et toute la famille, en vente en pharmacies au Maroc.`,

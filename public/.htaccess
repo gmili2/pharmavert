@@ -39,6 +39,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)$ $1.html [L]
 
+# Back-office, et produits ajoutés depuis le back-office après le dernier pré-rendu :
+# l'application se charge seule et lit les produits sur api/produits.php.
+RewriteRule ^admin$ /app.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html !-f
+RewriteRule ^produit/[a-z0-9-]+$ /app.html [L]
+
 # Fichiers versionnés par Vite : cache long. Pages HTML : toujours revalidées.
 <IfModule mod_headers.c>
   <FilesMatch "\.(js|css)$">

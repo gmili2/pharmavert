@@ -10,6 +10,7 @@ export const CONTACT = {
   city: 'Maroc',
   hours: 'Du lundi au samedi, 9h – 18h',
   email: 'contact@pharmavert.ma',
+  recruitmentEmail: 'recrutement@pharmavert.ma',
 };
 
 /** Réseaux sociaux : une adresse vide masque l'icône sur le site. */
@@ -173,6 +174,7 @@ export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (
 export const waLink = (text: string) => `https://wa.me/${CONTACT.phoneIntl}?text=${encodeURIComponent(text)}`;
 export const telLink = `tel:+${CONTACT.phoneIntl}`;
 export const mailLink = `mailto:${CONTACT.email}`;
+export const recruitmentLink = `mailto:${CONTACT.recruitmentEmail}?subject=${encodeURIComponent('Candidature')}`;
 
 /** Recherche insensible aux accents sur nom, description et mots-clés. */
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

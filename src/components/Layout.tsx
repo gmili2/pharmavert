@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { CONTACT, img, mailLink, telLink, waLink } from '../data/catalog';
+import { CONTACT, img, mailLink, recruitmentLink, telLink, waLink } from '../data/catalog';
 import { Icon, Logo, SocialLinks, WhatsAppIcon } from './Art';
 
 const LINKS = [
@@ -64,6 +64,7 @@ function Footer() {
         <span className="footer-contact">
           <a className="footer-phone" href={telLink}><Icon name="phone" size={16} /> {CONTACT.phone}</a>
           <a className="footer-phone" href={mailLink}><Icon name="mail" size={16} /> {CONTACT.email}</a>
+          <a className="footer-phone" href={recruitmentLink}><Icon name="mail" size={16} /> {CONTACT.recruitmentEmail}</a>
           <SocialLinks className="social footer-social" />
         </span>
       </div>

@@ -34,7 +34,7 @@ export function siteJsonLd(): object[] {
       '@id': SITE_URL + '/#organization',
       name: SITE_NAME,
       url: SITE_URL + '/',
-      logo: absUrl('/img/logo.png'),
+      logo: absUrl('/img/logo-pharmavert.png'),
       description: 'Société marocaine de fabrication et de commercialisation de compléments alimentaires pour enfants et adultes, en vente en pharmacies.',
       address: { '@type': 'PostalAddress', addressCountry: 'MA' },
       email: CONTACT.email,

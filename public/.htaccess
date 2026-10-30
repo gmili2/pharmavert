@@ -45,8 +45,10 @@ RewriteRule ^(.+)$ $1.html [L]
   <FilesMatch "\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+  # Images non versionnées : 1 jour seulement, pour qu'une photo remplacée apparaisse vite.
+  # Pour un changement immédiat, donner un nouveau nom au fichier (ex. logo-pharmavert.png).
   <FilesMatch "\.(jpg|jpeg|png|webp|svg|woff2)$">
-    Header set Cache-Control "public, max-age=2592000"
+    Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
   <FilesMatch "\.(html|xml|txt)$">
     Header set Cache-Control "no-cache"

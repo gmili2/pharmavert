@@ -52,7 +52,7 @@ export function GreenBand() {
       <div className="wrap band-row">
         <p className="script band-script">Ensemble pour<br />une vie plus saine</p>
         <div className="band-center">
-          <span className="brand-card"><img src={img('logo.png')} alt="Pharma Vert – Santé & Bien-être" width={396} height={141} /></span>
+          <span className="brand-card"><img src={img('logo-pharmavert.png')} alt="Pharma Vert – Santé & Bien-être" width={396} height={141} /></span>
           <Link to="/catalogue" className="btn btn-pill btn-white btn-lg">Découvrir nos produits <Icon name="arrow" stroke={2.2} /></Link>
         </div>
         <p className="band-flag"><MoroccoFlag /> Une entreprise marocaine</p>

@@ -57,7 +57,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="wrap footer-row">
-        <span className="brand-card footer-logo"><img src={img('logo.png')} alt="Pharma Vert – Santé & Bien-être" width={396} height={141} /></span>
+        <span className="brand-card footer-logo"><img src={img('logo-pharmavert.png')} alt="Pharma Vert – Santé & Bien-être" width={396} height={141} /></span>
         <nav aria-label="Liens du pied de page" className="footer-nav">
           {LINKS.map((l) => <Link key={l.to} to={l.to}>{l.label}</Link>)}
         </nav>

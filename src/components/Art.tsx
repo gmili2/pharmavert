@@ -2,7 +2,7 @@ import type { IconKey, Product } from '../data/catalog';
 import { SOCIALS, img } from '../data/catalog';
 
 export function Logo({ height = 58 }: { height?: number }) {
-  return <img src={img('logo.png')} alt="Pharma Vert – Santé & Bien-être" className="logo-img" style={{ height }} />;
+  return <img src={img('logo-pharmavert.png')} alt="Pharma Vert – Santé & Bien-être" className="logo-img" style={{ height }} />;
 }
 
 const PRODUCT_ICON: Record<Exclude<IconKey, 'mg'>, string> = {

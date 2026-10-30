@@ -24,7 +24,7 @@ function Carousel() {
       {slide === 0 && (
         <div className="slide slide-family" aria-roledescription="diapositive" aria-label="1 sur 2">
           <div className="slide-text slide-text-edge">
-            <img src={img('logo.png')} alt="" className="hero-logo" />
+            <img src={img('logo-pharmavert.png')} alt="" className="hero-logo" />
             <h1>La nature au service de votre bien-être</h1>
             <p className="lead">Compléments alimentaires et solutions naturelles pour toute la famille : enfants et adultes.</p>
             <Link to="/catalogue" className="btn btn-pill btn-lg">Découvrir nos produits <Icon name="arrow" stroke={2.2} /></Link>

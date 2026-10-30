@@ -94,6 +94,14 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
+    slug: 'nobal', name: 'Nobal', gamme: 'Anti-ballonnement', desc: 'Aide à réduire les ballonnements et les gaz, pour une digestion légère.',
+    image: 'anti-ballonnement.jpg', box: 'boite-nobal.webp', pack: 'Boîte de 30 gélules · poids net ≈ 12,5 g', actifs: 'Charbon végétal activé + E.S. de fenouil + E.S. de carvi',
+    color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'adulte',
+    keys: 'anti ballonnement digestion ventre estomac gaz charbon fenouil carvi',
+    summary: 'Nobal associe le charbon végétal activé aux extraits naturels de fenouil et de carvi. Il aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable. Boîte de 30 gélules, en vente en pharmacies.',
+    tabs: { ...tabs('Aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable.'), utilisation: '1 gélule 3 fois par jour.', composition: 'Charbon végétal activé, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
+  },
+  {
     slug: 'ociamag', name: 'Ociamag 375 mg', gamme: 'Magnésium', desc: 'Magnésium 375 mg et vitamine B6 pour soutenir votre équilibre au quotidien.',
     image: 'magnesium.jpg', box: 'boite-ociamag.webp', pack: 'Boîte de 30 gélules', actifs: 'Magnésium 375 mg · vitamine B6',
     color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte', isNew: true,
@@ -157,7 +165,7 @@ export const PRODUCTS: Product[] = [
 
 /** Anciennes adresses (avant les noms commerciaux), gardées pour les liens déjà partagés. */
 const OLD_SLUGS: Record<string, string> = {
-  'anti-inflammatoire': 'cumax', decontractant: 'deconat', magnesium: 'ociamag', 'stimulant-appetit': 'grofen', 'sirop-toux': 'respinat-enfant',
+  'anti-inflammatoire': 'cumax', decontractant: 'deconat', 'anti-ballonnement': 'nobal', magnesium: 'ociamag', 'stimulant-appetit': 'grofen', 'sirop-toux': 'respinat-enfant',
 };
 export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (OLD_SLUGS[slug] ?? slug));
 

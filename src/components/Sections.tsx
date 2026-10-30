@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CONTACT, recruitmentLink, SOCIALS, telLink, waLink } from '../data/catalog';
+import { CONTACT, img, mailLink, SOCIALS, telLink, waLink } from '../data/catalog';
 import { Icon, MoroccoFlag, SocialIcon, WhatsAppIcon } from './Art';
 
 /** Sur-titre centré entre deux traits, comme sur la maquette. */
@@ -52,8 +52,7 @@ export function GreenBand() {
       <div className="wrap band-row">
         <p className="script band-script">Ensemble pour<br />une vie plus saine</p>
         <div className="band-center">
-          <span className="band-brand">Pharma <span>Vert</span></span>
-          <span className="band-sub">SANTÉ &amp; BIEN-ÊTRE</span>
+          <span className="brand-card"><img src={img('logo.png')} alt="Pharma Vert – Santé & Bien-être" width={396} height={141} /></span>
           <Link to="/catalogue" className="btn btn-pill btn-white btn-lg">Découvrir nos produits <Icon name="arrow" stroke={2.2} /></Link>
         </div>
         <p className="band-flag"><MoroccoFlag /> Une entreprise marocaine</p>
@@ -94,9 +93,9 @@ export function ContactBlock({ title = 'Une question ? Écrivez-nous ou appelez'
               <span className="contact-icon"><Icon name="clock" size={22} /></span>
               <span><small>Disponibilité</small><b>{CONTACT.hours}</b></span>
             </div>
-            <a className="contact-card" href={recruitmentLink}>
+            <a className="contact-card" href={mailLink}>
               <span className="contact-icon"><Icon name="mail" size={22} /></span>
-              <span><small>Recrutement · envoyez votre CV</small><b className="contact-email">{CONTACT.recruitmentEmail}</b></span>
+              <span><small>E-mail</small><b className="contact-email">{CONTACT.email}</b></span>
             </a>
             {SOCIALS.map((s) => (
               <a key={s.key} className="contact-card" href={s.url} target="_blank" rel="noreferrer">

@@ -37,7 +37,7 @@ export function siteJsonLd(): object[] {
       logo: absUrl('/img/logo.png'),
       description: 'Société marocaine de fabrication et de commercialisation de compléments alimentaires pour enfants et adultes, en vente en pharmacies.',
       address: { '@type': 'PostalAddress', addressCountry: 'MA' },
-      email: CONTACT.recruitmentEmail,
+      email: CONTACT.email,
       contactPoint: [{ '@type': 'ContactPoint', telephone: '+' + CONTACT.phoneIntl, contactType: 'customer service', areaServed: 'MA', availableLanguage: ['fr', 'ar'] }],
       sameAs: SOCIALS.map((s) => s.url)
     },

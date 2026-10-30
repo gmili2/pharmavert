@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { CONTACT, recruitmentLink, telLink, waLink } from '../data/catalog';
+import { CONTACT, img, mailLink, telLink, waLink } from '../data/catalog';
 import { Icon, Logo, SocialLinks, WhatsAppIcon } from './Art';
 
 const LINKS = [
@@ -57,13 +57,13 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="wrap footer-row">
-        <span className="footer-brand"><b>Pharma Vert</b><span>Santé &amp; Bien-être</span></span>
+        <span className="brand-card footer-logo"><img src={img('logo.png')} alt="Pharma Vert – Santé & Bien-être" width={396} height={141} /></span>
         <nav aria-label="Liens du pied de page" className="footer-nav">
           {LINKS.map((l) => <Link key={l.to} to={l.to}>{l.label}</Link>)}
         </nav>
         <span className="footer-contact">
           <a className="footer-phone" href={telLink}><Icon name="phone" size={16} /> {CONTACT.phone}</a>
-          <a className="footer-phone" href={recruitmentLink}><Icon name="mail" size={16} /> {CONTACT.recruitmentEmail}</a>
+          <a className="footer-phone" href={mailLink}><Icon name="mail" size={16} /> {CONTACT.email}</a>
           <SocialLinks className="social footer-social" />
         </span>
       </div>

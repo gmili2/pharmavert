@@ -9,7 +9,7 @@ export const CONTACT = {
   phoneIntl: '212661706739',
   city: 'Maroc',
   hours: 'Du lundi au samedi, 9h – 18h',
-  recruitmentEmail: 'recrutement@pharmavert.ma',
+  email: 'contact@pharmavert.ma',
 };
 
 /** Réseaux sociaux : une adresse vide masque l'icône sur le site. */
@@ -96,7 +96,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: 'nobal', name: 'Nobal', gamme: 'Anti-ballonnement', desc: 'Aide à réduire les ballonnements et les gaz, pour une digestion légère.',
     image: 'anti-ballonnement.jpg', box: 'boite-nobal.webp', pack: 'Boîte de 30 gélules · poids net ≈ 12,5 g', actifs: 'Charbon végétal activé + E.S. de fenouil + E.S. de carvi',
-    color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'famille',
+    color: '#2F8F45', ink: '#1E6B34', icon: 'stomach', audience: 'adulte',
     keys: 'anti ballonnement digestion ventre estomac gaz charbon fenouil carvi',
     summary: 'Nobal associe le charbon végétal activé aux extraits naturels de fenouil et de carvi. Il aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable. Boîte de 30 gélules, en vente en pharmacies.',
     tabs: { ...tabs('Aide à réduire les ballonnements et les gaz intestinaux, et favorise une digestion légère et confortable.'), utilisation: '1 gélule 3 fois par jour.', composition: 'Charbon végétal activé, extrait sec de fenouil, extrait sec de carvi. Composition détaillée : à compléter avec l’étiquetage.' },
@@ -104,7 +104,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: 'ociamag', name: 'Ociamag 375 mg', gamme: 'Magnésium', desc: 'Magnésium 375 mg et vitamine B6 pour soutenir votre équilibre au quotidien.',
     image: 'magnesium.jpg', box: 'boite-ociamag.webp', pack: 'Boîte de 30 gélules', actifs: 'Magnésium 375 mg · vitamine B6',
-    color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte', isNew: true,
+    color: '#7A4FA0', ink: '#5F3A85', icon: 'mg', audience: 'adulte',
     keys: 'magnesium mg vitamine b6 fatigue stress detente equilibre sommeil nerveux',
     summary: 'Ociamag associe magnésium (375 mg) et vitamine B6 pour soutenir votre équilibre au quotidien. Le magnésium contribue à réduire la fatigue et participe au bon fonctionnement du système nerveux, avec le soutien de la vitamine B6. Un complément alimentaire Pharma Vert, en vente en pharmacies.',
     tabs: {
@@ -116,7 +116,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: 'grofen', name: 'Grofen gélules', gamme: 'Stimulant d’appétit', desc: 'Fenugrec et 11 vitamines : stimule l’appétit naturellement et relance l’énergie.',
     image: 'stimulant-appetit.jpg', box: 'boite-grofen.webp', pack: 'Boîte de 30 gélules', actifs: 'Fenugrec · 11 vitamines',
-    color: '#E8891C', ink: '#1E6B34', icon: 'fork', audience: 'adulte',
+    color: '#E8891C', ink: '#1E6B34', icon: 'fork', audience: 'adulte', isNew: true,
     keys: 'appetit manger fenugrec vitamines vitalite fatigue energie gelules',
     summary: 'Grofen associe le fenugrec à 11 vitamines pour stimuler l’appétit naturellement et relancer l’énergie. Cette formule complète contribue au bien-être général et à la vitalité. 1 à 2 gélules par jour, boîte de 30 gélules, en vente en pharmacies.',
     tabs: {
@@ -138,24 +138,26 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
-    slug: 'respinat-adulte', name: 'Respinat Adultes', gamme: 'Confort respiratoire · Sans sucre', desc: 'Miel, propolis, vitamine C et plantes, à la fraîcheur du menthol.',
-    image: 'sirop-toux.jpg', box: 'boite-respinat-adulte.webp', pack: 'Flacon de 200 mL · arôme orange', actifs: 'Miel · propolis · vitamine C · plantes · menthol',
+    slug: 'respinat-adulte', name: 'Respinat Adultes', gamme: 'Confort respiratoire · Sans sucre', desc: 'Propolis, vitamine C et plantes, à la fraîcheur du menthol.',
+    image: 'sirop-toux.jpg', box: 'boite-respinat-adulte.webp', pack: 'Flacons de 125 mL et 200 mL · arôme orange', actifs: 'Propolis · vitamine C · plantes · menthol',
     color: '#1F9A4E', ink: '#157038', icon: 'cough', audience: 'adulte', isNew: true,
-    keys: 'toux gorge rhume respiration respiratoire sirop miel propolis vitamine c echinacee eucalyptus thym mauve camomille sureau guimauve menthol sans sucre adulte',
-    summary: 'Respinat Adultes est une formule naturelle sans sucre, riche en actifs naturels. Elle associe miel, propolis, vitamine C et plantes sélectionnées (échinacée, eucalyptus, thym, mauve, camomille, sureau, guimauve) à la fraîcheur du menthol. Pensé pour votre bien-être respiratoire, il se présente en flacon de 200 mL. Une référence Pharma Vert.',
+    keys: 'toux gorge rhume respiration respiratoire sirop propolis vitamine c echinacee eucalyptus thym mauve camomille sureau guimauve menthol sans sucre adulte',
+    summary: 'Respinat Adultes est une formule naturelle sans sucre, riche en actifs naturels. Elle associe propolis, vitamine C et plantes sélectionnées (échinacée, eucalyptus, thym, mauve, camomille, sureau, guimauve) à la fraîcheur du menthol. Pensé pour votre bien-être respiratoire, il se présente en flacons de 125 mL et 200 mL. Une référence Pharma Vert.',
     tabs: {
-      ...tabs('Formule naturelle sans sucre pensée pour le bien-être et le confort respiratoire : miel, propolis, vitamine C et plantes sélectionnées (échinacée, eucalyptus, thym, mauve, camomille, sureau, guimauve), à la fraîcheur du menthol.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      ...tabs('Formule naturelle sans sucre pensée pour le bien-être et le confort respiratoire : propolis, vitamine C et plantes sélectionnées (échinacée, eucalyptus, thym, mauve, camomille, sureau, guimauve), à la fraîcheur du menthol.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      utilisation: '1 à 2 cuillères à soupe 3 fois par jour.',
       composition: RESPINAT_COMPO,
     },
   },
   {
-    slug: 'respinat-enfant', name: 'Respinat Enfants', gamme: 'Confort respiratoire · Sans sucre', desc: 'Miel, propolis, vitamine C et plantes douces pour le bien-être respiratoire des petits.',
-    image: 'sirop-toux.jpg', box: 'boite-respinat-enfant.webp', pack: 'Flacon de 125 mL · arôme orange', actifs: 'Miel · propolis · vitamine C · plantes douces',
+    slug: 'respinat-enfant', name: 'Respinat Enfants', gamme: 'Confort respiratoire · Sans sucre', desc: 'Propolis, vitamine C et plantes douces pour le bien-être respiratoire des petits.',
+    image: 'sirop-toux.jpg', box: 'boite-respinat-enfant.webp', pack: 'Flacons de 125 mL et 200 mL · arôme orange', actifs: 'Propolis · vitamine C · plantes douces',
     color: '#1BA3D6', ink: '#0F76A0', icon: 'cough', audience: 'enfant', isNew: true,
-    keys: 'toux gorge rhume respiration respiratoire sirop enfant bebe miel propolis vitamine c echinacee eucalyptus mauve camomille sureau guimauve menthol sans sucre',
-    summary: 'Pour accompagner les petits au quotidien, Respinat Enfants réunit miel, propolis, vitamine C et des plantes douces dans une formule naturelle sans sucre. Mauve, camomille sauvage, sureau noir, échinacée, guimauve, eucalyptus et menthol prennent soin de leur bien-être respiratoire. Flacon de 125 mL, de la gamme Pharma Vert.',
+    keys: 'toux gorge rhume respiration respiratoire sirop enfant bebe propolis vitamine c echinacee eucalyptus mauve camomille sureau guimauve menthol sans sucre',
+    summary: 'Pour accompagner les petits au quotidien, Respinat Enfants réunit propolis, vitamine C et des plantes douces dans une formule naturelle sans sucre. Mauve, camomille sauvage, sureau noir, échinacée, guimauve, eucalyptus et menthol prennent soin de leur bien-être respiratoire. Flacons de 125 mL et 200 mL, de la gamme Pharma Vert.',
     tabs: {
-      ...tabs('Formule naturelle sans sucre qui accompagne le bien-être respiratoire des petits au quotidien : miel, propolis, vitamine C et plantes douces (mauve, camomille sauvage, sureau noir, échinacée, guimauve, eucalyptus), avec du menthol.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      ...tabs('Formule naturelle sans sucre qui accompagne le bien-être respiratoire des petits au quotidien : propolis, vitamine C et plantes douces (mauve, camomille sauvage, sureau noir, échinacée, guimauve, eucalyptus), avec du menthol.', 'Bien refermer le flacon après usage. ' + CONSERVATION),
+      utilisation: '1 à 2 cuillères à café 3 fois par jour.',
       composition: RESPINAT_COMPO,
     },
   },
@@ -170,7 +172,7 @@ export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === (
 /** Lien WhatsApp vers le délégué avec un message pré-rempli. */
 export const waLink = (text: string) => `https://wa.me/${CONTACT.phoneIntl}?text=${encodeURIComponent(text)}`;
 export const telLink = `tel:+${CONTACT.phoneIntl}`;
-export const recruitmentLink = `mailto:${CONTACT.recruitmentEmail}?subject=${encodeURIComponent('Candidature')}`;
+export const mailLink = `mailto:${CONTACT.email}`;
 
 /** Recherche insensible aux accents sur nom, description et mots-clés. */
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();

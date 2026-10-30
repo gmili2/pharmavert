@@ -16,7 +16,7 @@ export const CONTACT = {
 type Social = { key: 'linkedin' | 'facebook' | 'instagram'; name: string; url: string };
 export const SOCIALS = ([
   { key: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/company/pharmavert/' },
-  { key: 'facebook', name: 'Facebook', url: '' },
+  { key: 'facebook', name: 'Facebook', url: 'https://www.facebook.com/share/1A412SFs3e/' },
   { key: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/pharmavert/' },
 ] as Social[]).filter((s) => s.url);
 
